@@ -1,13 +1,9 @@
 package CSP;
 
 import util.FIFOQueue;
-import java.util.List;
 
 /**
  * Artificial Intelligence A Modern Approach (3rd Ed.): Figure 6.3, Page 209.
- * https://aima-java.googlecode.com/svn/trunk/aima-core/src/main/java/aima/core/search/csp/AC3Strategy.java
-
-Implementation of the MAC Algorithm
  */
 public class AC3 {
 
@@ -29,7 +25,7 @@ public class AC3 {
 				queue.add(var);
 				result.storeDomainFor(var, domain);
 				csp.setDomain(var, new Domain(new Object[] { value }));
-				reduceDomains(queue, csp, result);
+				reduceDomains(queue, csp, result, assignment);
 			}
 		} else {
 			result.setEmptyDomainFound(true);
@@ -56,6 +52,10 @@ public class AC3 {
 		}
 	}
 	
+	/*
+	 * MAC Algorithm implementation
+	 */
+
 	private void reduceDomains(FIFOQueue<Variable> queue, CSP csp,
 			DomainRestore info, Assignment assignment) {
 		while (!queue.isEmpty()) {
@@ -73,22 +73,6 @@ public class AC3 {
 						}
 					}
 				}
-				else if (constraint.getScope().size() > 2){
-					List <Variable> scope = constraint.getScope();
-					for (Variable neigh : scope){
-						if (!assignment.hasAssignmentFor(neigh)){
-							if (revise(neigh, var, constraint, csp, info)) {
-								if (csp.getDomain(neigh).isEmpty()) {
-									System.out.println("empty");
-									info.setEmptyDomainFound(true);
-									return;
-								}
-								queue.push(neigh);
-							}
-						}
-					}
-				}
-				
 			}
 		}
 	}

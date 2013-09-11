@@ -49,7 +49,8 @@ public class MagicSquare extends CSP {
 		for (Variable var : getVariables())
 			setDomain(var, numbers);
 
-		addConstraint(new AllDifferentConstraint(getVariables()));
+		@SuppressWarnings("unused")
+		AllDifferentConstraint allDiff = new AllDifferentConstraint(getVariables(), this);
 
 		for (int j = 0; j < dimension; j++) {
 			addConstraint(new ExactSumConstraint(getRow(getVariables(), j), sum));

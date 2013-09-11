@@ -1,43 +1,21 @@
 package CSP;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Personal implementation of AllDifferent global constraint.
+ * Personal implementation of AllDifferent constraint.
  * The constraint is satisfied if all the variables in the given array are different each others.
  */
 
-public class AllDifferentConstraint implements Constraint {
-
-	private List <Variable> variables;
-	private List<Variable> scope;
-
-	public AllDifferentConstraint(List <Variable> variables) {
-		this.variables = variables;
-		scope = new ArrayList<Variable>(variables.size());
-		scope = variables;
-	}
-
-	@Override
-	public List<Variable> getScope() {
-		return scope;
-	}
-
-	@Override
-	public boolean isSatisfiedWith(Assignment assignment) {
+public class AllDifferentConstraint {
+	public AllDifferentConstraint(List <Variable> variables, CSP csp) {		
 		for(int i = 0; i < variables.size(); i++){		
-			Object value = assignment.getAssignment(variables.get(i));
-			if (value != null){
+			Variable var1 = variables.get(i);
 				for (int j = 0; j < variables.size(); j++){
 					if(i != j){
-						if(value == assignment.getAssignment(variables.get(j))){
-							return false;
-						}		
+						csp.addConstraint(new NotEqualConstraint(var1, variables.get(j)));
 					}
-				}
-			}
+				}		
 		}
-		return true;
 	}
 }

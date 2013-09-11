@@ -39,7 +39,7 @@ public class Backtracking extends Solution {
 				
 				if (assignment.isConsistent(csp.getConstraints(var))) {
 					DomainRestore info = inference(var, assignment, csp);
-					if (!info.isEmpty())
+					if (!info.isEmpty()){}
 					if (!info.isEmptyDomainFound()) {
 						result = recursiveBackTrackingSearch(csp, assignment);
 						if (result != null)
