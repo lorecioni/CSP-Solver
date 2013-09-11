@@ -6,8 +6,6 @@ import java.util.List;
 /**
  * Artificial Intelligence A Modern Approach (3rd Ed.): Figure 6.3, Page 209.
  * https://aima-java.googlecode.com/svn/trunk/aima-core/src/main/java/aima/core/search/csp/AC3Strategy.java
-
-Implementation of the MAC Algorithm
  */
 public class AC3 {
 

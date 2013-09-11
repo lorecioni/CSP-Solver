@@ -1,7 +1,13 @@
 package problems;
+import gui.*;
+import java.text.DecimalFormat;
 
 public class Simulator {
 	public static void main(String [] args) {
+		
+		Runtime runtime = Runtime.getRuntime();
+		
+		float mb = (1024*1024);
 		
 		//Create an instance of magic square problem with dimension given in command line
 		int dimension;
@@ -17,5 +23,12 @@ public class Simulator {
 		//Create an instance of Langford problem
 		Langford langford = new Langford();
 		langford.solve();
+		
+		//Print used memory
+		DecimalFormat df = new DecimalFormat();
+		df.setMinimumFractionDigits(2);
+        System.out.println("Used Memory: "
+            + df.format((runtime.totalMemory() - runtime.freeMemory())/mb) + " Mb");
+		
 	}
 }

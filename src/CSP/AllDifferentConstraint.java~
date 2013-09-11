@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Personal implementation of AllDifferent global constraint.
+ * Personal implementation of AllDifferent constraint.
  * The constraint is satisfied if all the variables in the given array are different each others.
  */
 

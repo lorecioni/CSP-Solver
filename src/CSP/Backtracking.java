@@ -69,7 +69,7 @@ public class Backtracking extends Solution {
 	protected DomainRestore inference(Variable var, Assignment assignment,
 			CSP csp) {
 			return new AC3().reduceDomains(var,
-					assignment.getAssignment(var), csp);
+					assignment.getAssignment(var), csp, assignment);
 	}
 
 }
